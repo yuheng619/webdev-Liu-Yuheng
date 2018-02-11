@@ -35,7 +35,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n", ""]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n.navbar-default{\n  background-color: cornflowerblue;\n  border-color:cornflowerblue;\n}\n.navbar-default .navbar-brand {\n  color: white;\n}\n\n/*.navbar-fixed-bottom, .navbar-fixed-top {*/\n  /*position: relative;*/\n/*}*/\n\n.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {\n  position: relative;\n  min-height: 1px;\n   padding-right: 0px;\n   padding-left: 0px;\n}\n\n/*.navbar {*/\n  /*position: relative;*/\n  /*min-height: 50px;*/\n  /*margin-bottom: 0px;*/\n  /*border: 1px solid transparent;*/\n/*}*/\n\n.list-group-item {\n  position: relative;\n  display: block;\n  padding: 10px 15px;\n  margin-bottom: -1px;\n  background-color: #fff;\n  border: 0px;\n}\n\n.navbar-brand {\n  float: left;\n  height: 50px;\n  padding: 15px 15px 15px 0px;\n  font-size: 18px;\n  line-height: 20px;\n}\n.navbar-text {\n  float: left;\n  margin-right: 15px;\n  margin-left: 0px;\n}\n\n", ""]);
 
 // exports
 

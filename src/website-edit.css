@@ -1,0 +1,28 @@
+.navbar-default{
+  background-color: cornflowerblue;
+  border-color:cornflowerblue;
+}
+.navbar-default .navbar-brand {
+  color: white;
+}
+.col-xs-3 hidden-xs{
+  position: absolute;
+  width: 25%;
+  overflow: scroll;
+  bottom: 166px;
+  top: 0px;
+}
+
+.glyphicon glyphicon-chevron-left{
+  padding-right: 20px;
+}
+
+.col-sm-9 col-xs-12{
+  position: absolute;
+  right: 0px;
+}
+
+.row{
+  position: relative;
+  height: 100%;
+}
