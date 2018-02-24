@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-.navbar-default{
+.navbar-blue {
   background-color: cornflowerblue;
   border-color:cornflowerblue;
 }
-.navbar-default .navbar-brand {
+.navbar-blue .navbar-brand {
   color: white;
 }
 

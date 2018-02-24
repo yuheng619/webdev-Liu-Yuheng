@@ -1,10 +1,10 @@
-.navbar-default{
-  background-color: cornflowerblue;
-  border-color:cornflowerblue;
-}
-.navbar-default .navbar-brand {
-  color: white;
-}
+/*.navbar-default{*/
+  /*background-color: cornflowerblue;*/
+  /*border-color:cornflowerblue;*/
+/*}*/
+/*.navbar-default .navbar-brand {*/
+  /*color: white;*/
+/*}*/
 .col-xs-3 hidden-xs{
   position: absolute;
   width: 25%;

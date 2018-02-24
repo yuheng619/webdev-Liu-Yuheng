@@ -1,3 +1,70 @@
-<h1>Websites</h1>
+<nav class="navbar navbar-default navbar-blue">
+    <div class="container-fluid">
+        <a [routerLink] = "['/user/:uid/website/new']" class="pull-right navbar-text">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+        <a [routerLink] = "['/user/:uid']" class="pull-left navbar-text">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <div class="navbar-header">
+            <a class="navbar-brand">
+                Websites
+            </a>
+        </div>
+    </div>
+</nav>
 
-{{websites.length}}
+<div class="container-fluid" style="height: 100%;">
+    <ul class="list-group">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-6"><a [routerLink]="['/user/:uid/website/:wid/page']">Address Book App</a></div>
+                <div class="col-xs-6">
+                    <a [routerLink]="['/user/:uid/website/:wid']" class="pull-right">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-6"><a [routerLink]="['/user/:uid/website/:wid/page']">Blogger</a></div>
+                <div class="col-xs-6">
+                    <a [routerLink]="['/user/:uid/website/:wid']" class="pull-right">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-6"><a [routerLink] = "['/user/:uid/website/:wid/page']">Blogging App</a></div>
+                <div class="col-xs-6">
+                    <a [routerLink]="['/user/:uid/website/:wid']" class="pull-right">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-6"><a [routerLink]="['/user/:uid/website/:wid/page']">Script Testing App</a></div>
+                <div class="col-xs-6">
+                    <a [routerLink] = "['/user/:uid/website/:wid']" class="pull-right">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom navbar-blue">
+    <div class="container-fluid">
+        <p class="navbar-text pull-right">
+            <a [routerLink] = "['/user/:uid']">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </p>
+
+    </div>
+</nav>

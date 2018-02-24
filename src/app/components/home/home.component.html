@@ -1,19 +1,15 @@
-
+<h1>Assignment Home Page</h1>
 <div class="container">
-
-  <h1>
-    Angular 4 MEAN stack app
-  </h1>
-
-
-  <h3>
-    App works
-  </h3>
-
-
-  <h4>
-    <a href="test">Test MongoDB</a>
-  </h4>
-
+  <ul><a [routerLink]="['login']">login</a></ul>
+  <ul><a [routerLink]="['register']">register</a></ul>
+  <ul><a [routerLink]="['user/:uid']">profile</a></ul>
+  <ul><a [routerLink]="['user/:uid/website']">website-list</a></ul>
+  <ul><a [routerLink]="['user/:uid/website/new']">website-new</a></ul>
+  <ul><a [routerLink]="['user/:uid/website/:wid']">website-edit</a></ul>
+  <ul><a [routerLink]="['user/:uid/website/:wid/page']">page-list</a></ul>
+  <ul><a [routerLink]="['user/:uid/website/:wid/page/new']">page-new</a></ul>
+  <ul><a [routerLink]="['user/:uid/website/:wid/page/:pid']">page-edit</a></ul>
+  <ul><a [routerLink]="['user/:uid/website/:wid/page/:pid/widget']">widget-list</a></ul>
+  <ul><a [routerLink]="['user/:uid/website/:wid/page/:pid/widget/new']">widget-chooser</a></ul>
+  <ul><a [routerLink]="['user/:uid/website/:wid/page/:pid/widget/:wgid']">widget-edit</a></ul>
 </div>
-
