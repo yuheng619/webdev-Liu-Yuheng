@@ -19,14 +19,16 @@
   <label for="name">
     Name
   </label>
-  <input class="form-control"
+  <input [(ngModel)] = "name"
+         class="form-control"
          id="name"
          placeholder="Facebook"/>
-  <label for="title">
+  <label>
     Title
   </label>
-  <input class="form-control"
-         id="title"
+  <input [(ngModel)] = "description"
+         class="form-control"
+         id="description"
          placeholder="Page Title"/>
   <a class="btn btn-danger btn-block"
      a [routerLink]="['/user/:uid/website/:wid/page']">Delete</a>

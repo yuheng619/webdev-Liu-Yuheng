@@ -40,7 +40,7 @@ const APP_ROUTES: Routes = [
   {path: 'user/:uid/website/:wid/page/:pid/widget/:wgid', component: WidgetEditComponent},
   {path: 'user/:uid/website/:wid/page/:pid/widget/:wgid/widget-header', component: WidgetHeaderComponent},
   {path: 'user/:uid/website/:wid/page/:pid/widget/:wgid/widget-image', component: WidgetImageComponent},
-  {path: 'user/:uid/website/:wid/page/:pid/widget/:wgid/widget-youtube', component: WidgetYoutubeComponent}
+  {path: 'user/:uid/website/:wid/page/:pid/widget/:wgid/widget-youtube', component: WidgetYoutubeComponent},
 
 ];
 

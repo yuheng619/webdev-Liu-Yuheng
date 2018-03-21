@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {WidgetService} from '../../../../services/widget.service.client';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-widget-header',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WidgetHeaderComponent implements OnInit {
 
-  constructor() { }
+  // properties
+  widgetId: string;
+  widget = {};
+  name: string;
+  text: string;
+  size: string;
+  constructor(private widgetService: WidgetService, private activateRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.activateRoute.params
+        .subscribe(
+            (params: any) => {
+              this.widgetId = params['wgid'];
+            }
+        )
+    this.widget = this.widgetService.findWidgetById(this.widgetId);
+    this.name = this.widget['name'];
+    this.text = this.widget['text'];
+    this.size = this.widget['size'];
   }
 
 }

@@ -21,18 +21,21 @@
   <label for="name">
     Name
   </label>
-  <input class="form-control"
+  <input [(ngModel)] = "name"
+         class="form-control"
          id="name"
          placeholder="Facebook"/>
   <label for="description">
     Text
   </label>
-  <textarea class="form-control"
-            id="description"></textarea>
+  <textarea [(ngModel)] = "text"
+          class="form-control"
+          id="description"></textarea>
   <label for="size">
     Size
   </label>
-  <input class="form-control"
+  <input [(ngModel)] = "size"
+         class="form-control"
          id="size"
          placeholder="3"/>
   <a class="btn btn-danger btn-block"

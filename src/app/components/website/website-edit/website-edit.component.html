@@ -4,10 +4,10 @@
       <nav class="navbar navbar-default navbar-blue">
         <div class="container-fluid">
           <a [routerLink]="['/user/:uid/website']" class="pull-right navbar-text">
-            <span class="glyphicon glyphicon-plus navbar-white"></span>
+            <span class="glyphicon glyphicon-plus "></span>
           </a>
           <a [routerLink]="['/user/:uid/website']" class="pull-left navbar-text">
-            <span class="glyphicon glyphicon-chevron-left navbar-white"></span>
+            <span class="glyphicon glyphicon-chevron-left"></span>
           </a>
           <div class="navbar-header">
             <a class="navbar-brand navbar-blue">
@@ -17,27 +17,9 @@
         </div>
       </nav>
       <ul class="list-group">
-        <li class="list-group-item">
-          Blogging App
-          <a class="pull-right">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-        </li>
-        <li class="list-group-item">
-          Address Book App
-          <a class="pull-right">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-        </li>
-        <li class="list-group-item">
-          Script Testing App
-          <a class="pull-right">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-        </li>
-        <li class="list-group-item">
-          Blogger
-          <a class="pull-right">
+        <li class="list-group-item" *ngFor = "let website of websites">
+          {{website.name}}
+          <a  class="pull-right">
             <span class="glyphicon glyphicon-cog"></span>
           </a>
         </li>
@@ -47,7 +29,7 @@
       <nav class="navbar navbar-default navbar-blue">
         <div class="container-fluid">
           <a [routerLink]="['/user/:uid/website']" class="pull-right navbar-text">
-            <span class="glyphicon glyphicon-ok navbar-white"></span>
+            <span class="glyphicon glyphicon-ok"></span>
           </a>
           <div class="navbar-header">
             <a class="navbar-brand">
@@ -59,13 +41,15 @@
       <label for="name">
         Website Name
       </label>
-      <input class="form-control"
+      <input [(ngModel)]="name"
+             class="form-control"
              id="name"
              placeholder="Facebook"/>
       <label for="description">
         Website Description
       </label>
-      <textarea class="form-control"
+      <textarea [(ngModel)]="description"
+                class="form-control"
                 id="description"></textarea>
       <a class="btn btn-danger btn-block"
          [routerLink]="['/user/:uid/website']">Delete</a>
@@ -74,7 +58,7 @@
       <div class="container-fluid">
         <p class="navbar-text pull-right">
           <a [routerLink]="['/user/:uid']">
-            <span class="glyphicon glyphicon-user navbar-white"></span>
+            <span class="glyphicon glyphicon-user"></span>
           </a>
         </p>
 

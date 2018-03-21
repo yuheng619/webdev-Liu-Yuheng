@@ -20,20 +20,24 @@
   </nav>
 
   <label for="name">Name</label>
-  <input class="form-control"
+  <input [(ngModel)] = "name"
+          class="form-control"
          id="name"
          placeholder="Facebook"/>
 
   <label for="text">Text</label>
-  <input class="form-control"
+  <input [(ngModel)] = "text"
+          class="form-control"
          id="text"/>
 
   <label for="url">URL</label>
-  <input class="form-control"
+  <input [(ngModel)]="url"
+          class="form-control"
          id="url"/>
 
   <label for="width">Width</label>
-  <input class="form-control"
+  <input [(ngModel)]="width"
+          class="form-control"
          id="width"/>
 
   <label for="upload">Upload</label>

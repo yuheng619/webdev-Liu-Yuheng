@@ -13,7 +13,10 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoEditComponent } from './todo-list/todo-edit.component';
 import {TodoService} from './services/todo.service.client';
 import { WebsiteListComponent } from './components/website/website-list/website-list.component';
-import {WebsiteService} from './services/website.service.client';
+import { UserService } from './services/user.service.client';
+import { WebsiteService } from './services/website.service.client';
+import { PageService } from './services/page.service.client';
+import { WidgetService } from './services/widget.service.client';
 import {LoginComponent} from './components/user/login/login.component';
 import {ProfileComponent} from './components/user/profile/profile.component';
 import {RegisterComponent} from './components/user/register/register.component';
@@ -61,7 +64,7 @@ import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-y
     Routing
   ],
   // Client Side services here
-  providers: [ TestService, TodoService, WebsiteService ],
+  providers: [ TestService, TodoService, UserService, WebsiteService, PageService, WidgetService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
