@@ -15,7 +15,7 @@ app.use(function(req, res, next){
     next()
 
 });
-const port = '3100';
+const port = process.env.PORT || '3100';
 app.set('port', port);
 const server = http.createServer(app);
 var user = require("./services/user.service.server");
