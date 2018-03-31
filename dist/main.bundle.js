@@ -1874,14 +1874,14 @@ var PageService = (function () {
         };
     }
     PageService.prototype.createPage = function (websiteId, page) {
-        var url = 'http://localhost:3100/api/website/' + websiteId + '/page';
+        var url = '/api/website/' + websiteId + '/page';
         return this._http.post(url, page)
             .map(function (response) {
             return response.json();
         });
     };
     PageService.prototype.findPageByWebsiteId = function (websiteId) {
-        var url = 'http://localhost:3100/api/website/' + websiteId + '/page';
+        var url = '/api/website/' + websiteId + '/page';
         return this._http.get(url)
             .map(function (response) {
             return response.json();
@@ -1902,7 +1902,7 @@ var PageService = (function () {
         }
     };
     PageService.prototype.updatePage = function (pageId, page) {
-        var url = 'http://localhost:3100/api/page/' + pageId;
+        var url = '/api/page/' + pageId;
         return this._http.put(url, page)
             .map(function (response) {
             return response.json;
@@ -1914,7 +1914,7 @@ var PageService = (function () {
         }*/
     };
     PageService.prototype.deletePage = function (pageId) {
-        var url = 'http://localhost:3100/api/page/' + pageId;
+        var url = '/api/page/' + pageId;
         return this._http.delete(url)
             .map(function (response) {
             return response.json();
@@ -2107,15 +2107,15 @@ var UserService = (function () {
         /* user._id = '456';
          this.users.push(user);
          return user;*/
-        var url = 'http://localhost:3100/api/user/';
+        var url = '/api/user/';
         return this._http.post(url, user).map(function (response) { return response.json(); });
     };
     UserService.prototype.findUserById = function (userId) {
-        var url = 'http://localhost:3100/api/user/' + userId;
+        var url = '/api/user/' + userId;
         return this._http.get(url).map(function (response) { return response.json(); });
     };
     UserService.prototype.findUserByUsername = function (username) {
-        var url = 'http://localhost:3100/api/user?username=' + username;
+        var url = '/api/user?username=' + username;
         return this._http.get(url)
             .map(function (response) { return response.json(); });
         /*for (let x = 0; x < this.users.length; x++) {
@@ -2130,7 +2130,7 @@ var UserService = (function () {
         //        return this.users[x];
         //    }
         // this._http.get('some_url' + ).
-        var url = 'http://localhost:3100/api/user?username=' + username + '&password=' + password;
+        var url = '/api/user?username=' + username + '&password=' + password;
         return this._http.get(url)
             .map(function (response) { return response.json(); });
     };
@@ -2140,7 +2140,7 @@ var UserService = (function () {
                 this.users[x] = user;
             }
         }*/
-        var url = 'http://localhost:3100/api/user/' + userId;
+        var url = '/api/user/' + userId;
         return this._http.put(url, user)
             .map(function (response) { return response.json(); });
     };
@@ -2150,7 +2150,7 @@ var UserService = (function () {
                 delete this.users[x];
             }
         }*/
-        var url = 'http://localhost:3100/api/' + userId;
+        var url = '/api/' + userId;
         return this._http.delete(url)
             .map(function (response) { return response.json(); });
     };
@@ -2205,7 +2205,7 @@ var WebsiteService = (function () {
         };
     }
     WebsiteService.prototype.createWebsite = function (userId, website) {
-        var url = 'http://localhost:3100/api/user/' + userId + '/website';
+        var url = '/api/user/' + userId + '/website';
         return this._http.post(url, website)
             .map(function (response) {
             return response.json();
@@ -2215,7 +2215,7 @@ var WebsiteService = (function () {
         return website;*/
     };
     WebsiteService.prototype.findWebsitesByUser = function (userId) {
-        var url = 'http://localhost:3100/api/user/' + userId + '/website';
+        var url = '/api/user/' + userId + '/website';
         return this._http.get(url)
             .map(function (response) {
             return response.json();
@@ -2241,14 +2241,14 @@ var WebsiteService = (function () {
                 this.websites[x] = website;
             }
         }*/
-        var url = 'http://localhost:3100/api/website/' + websiteId;
+        var url = '/api/website/' + websiteId;
         return this._http.put(url, website)
             .map(function (response) {
             return response.json;
         });
     };
     WebsiteService.prototype.deleteWebsite = function (websiteId) {
-        var url = 'http://localhost:3100/api/website/' + websiteId;
+        var url = '/api/website/' + websiteId;
         return this._http.delete(url)
             .map(function (response) {
             return response.json();
@@ -2312,24 +2312,24 @@ var WidgetService = (function () {
         };
     }
     WidgetService.prototype.createWidget = function (pageId, widget) {
-        var url = 'http://localhost:3100/api/page/' + pageId + '/widget';
+        var url = '/api/page/' + pageId + '/widget';
         return this._http.post(url, widget).map(function (response) { return response.json(); });
     };
     WidgetService.prototype.findWidgetsByPageId = function (pageId) {
-        var url = 'http://localhost:3100/api/page/' + pageId + '/widget';
+        var url = '/api/page/' + pageId + '/widget';
         return this._http.get(url).map(function (response) { return response.json(); });
     };
     WidgetService.prototype.findWidgetById = function (widgetId) {
-        var url = 'http://localhost:3100/api/widget/' + widgetId;
+        var url = '/api/widget/' + widgetId;
         return this._http.get(url).map(function (response) { return response.json(); });
     };
     WidgetService.prototype.updateWidget = function (widgetId, widget) {
-        var url = 'http://localhost:3100/api/widget/' + widgetId;
+        var url = '/api/widget/' + widgetId;
         return this._http.put(url, widget)
             .map(function (response) { return response.json(); });
     };
     WidgetService.prototype.deleteWidget = function (widgetId) {
-        var url = 'http://localhost:3100/api/widget/' + widgetId;
+        var url = '/api/widget/' + widgetId;
         return this._http.delete(url)
             .map(function (response) { return response.json(); });
     };
