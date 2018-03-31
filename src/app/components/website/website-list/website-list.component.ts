@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WebsiteService} from '../../../services/website.service.client';
 import {ActivatedRoute} from '@angular/router';
+import {Website} from '../../../models/website/website.model.client';
 
 @Component({
   selector: 'app-website-list',
@@ -20,7 +21,10 @@ export class WebsiteListComponent implements OnInit {
             }
         );
 
-      this.websites = this._websiteService.findWebsitesByUser(this.userId);
+      this._websiteService.findWebsitesByUser(this.userId)
+          .subscribe((websites: any[]) => {
+              this.websites = websites;
+          });
   }
 }
 

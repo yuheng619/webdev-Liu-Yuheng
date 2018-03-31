@@ -22,9 +22,9 @@
            ngModel
            required
            #username="ngModel"/>
-    <a [routerLink]="['/user/:uid']" ><button class="btn btn-primary btn-block"
-            type="submit" [disabled]="!f.valid">Login</button></a>
-    <a [routerLink]="['register']" ><button class="btn btn-success btn-block"
+    <button class="btn btn-primary btn-block"
+            type="submit" [disabled]="!f.valid">Login</button>
+    <a [routerLink]="['/register']" ><button class="btn btn-success btn-block"
                                               type="submit">Register</button></a>
   </form>
 </div>

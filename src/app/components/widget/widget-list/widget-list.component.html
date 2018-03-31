@@ -8,7 +8,7 @@
     <span class="glyphicon glyphicon-chevron-left"></span>
   </a>
   <div class="container-fluid">
-    <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/new']" class="pull-right navbar-text">
+    <a [routerLink]="['/user/' + uid + '/website/'+ wid +'/page/'+ pid +'/widget/new']" class="pull-right navbar-text">
       <span class="glyphicon glyphicon-plus"></span>
     </a>
     <div class="navbar-header">
@@ -23,14 +23,14 @@
 
 <div *ngSwitchCase = "'HEADING'" class="jga-widget">
   <span class="pull-right glyphicon glyphicon-menu-hamburger"></span>
-  <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid/widget-header']">
+  <a [routerLink]="['/user/' + uid + '/website/'+ wid +'/page/'+ pid +'/widget/'+widget._id]">
     <span class="pull-right glyphicon glyphicon-cog"></span></a>
   <h1>{{widget.text}}</h1>
 </div>
 
 <div *ngSwitchCase = "'IMAGE'" class="jga-widget">
   <span class="pull-right glyphicon glyphicon-menu-hamburger"></span>
-  <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid/widget-image']">
+  <a [routerLink]="['/user/' + uid + '/website/'+ wid +'/page/'+ pid +'/widget/'+widget._id]">
     <span class="pull-right glyphicon glyphicon-cog"></span></a>
   <img class="jga-content" [src]="widget.url"/>
 </div>
@@ -43,7 +43,7 @@
 
 <div *ngSwitchCase = "'YOUTUBE'" class="jga-widget">
   <span class="pull-right glyphicon glyphicon-menu-hamburger"></span>
-  <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid/widget-youtube']">
+  <a [routerLink]="['/user/' + uid + '/website/'+ wid +'/page/'+ pid +'/widget/'+widget._id]">
     <span class="pull-right glyphicon glyphicon-cog"></span></a>
   <iframe width="560" height="315" [src]="santinizeUrl(widget?.url)" frameborder="0" allowfullscreen></iframe>
 </div>

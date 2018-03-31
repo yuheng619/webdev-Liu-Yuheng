@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-blue">
     <div class="container-fluid">
-        <a [routerLink] = "['/user/:uid/website/new']" class="pull-right navbar-text">
+        <a [routerLink] = "['/user/' + userId + '/website/new']" class="pull-right navbar-text">
             <span class="glyphicon glyphicon-plus navbar-white"></span>
         </a>
         <a [routerLink] = "['/user/:uid']" class="pull-left navbar-text">
@@ -18,9 +18,9 @@
     <ul class="list-group">
         <li class="list-group-item">
             <div  *ngFor="let website of websites" class="row">
-                <div class="col-xs-6"><a [routerLink]="['/user/:uid/website/:wid/page']">{{website.name}}</a></div>
+                <div class="col-xs-6"><a [routerLink]="['/user/'+userId+'/website/'+ website._id +'/page']">{{website.name}}</a></div>
                 <div class="col-xs-6">
-                    <a [routerLink]="['/user/:uid/website/:wid']" class="pull-right">
+                    <a [routerLink]="['/user/'+userId +'/website/'+website._id]" class="pull-right">
                         <span class="glyphicon glyphicon-cog"></span>
                     </a>
                 </div>

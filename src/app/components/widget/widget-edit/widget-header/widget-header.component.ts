@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WidgetService} from '../../../../services/widget.service.client';
 import {ActivatedRoute} from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-widget-header',
@@ -10,24 +11,70 @@ import {ActivatedRoute} from '@angular/router';
 export class WidgetHeaderComponent implements OnInit {
 
   // properties
-  widgetId: string;
+  uid: string;
+  wid: string;
+  pid: string;
+  wgid: string;
   widget = {};
   name: string;
   text: string;
   size: string;
-  constructor(private widgetService: WidgetService, private activateRoute: ActivatedRoute) { }
+  widgets: any[];
+  constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.activateRoute.params
-        .subscribe(
-            (params: any) => {
-              this.widgetId = params['wgid'];
-            }
-        )
-    this.widget = this.widgetService.findWidgetById(this.widgetId);
-    this.name = this.widget['name'];
-    this.text = this.widget['text'];
-    this.size = this.widget['size'];
+      this.activatedRoute.params
+          .subscribe(
+              (params: any) => {
+                  this.uid = params['uid'];
+                  this.wid = params['wid'];
+                  this.pid = params['pid'];
+                  this.wgid = params['wgid'];
+                  this.widgetService.findWidgetById(this.wgid).subscribe(
+                      (widget) => {
+                          this.widget = widget;
+                          this.name = widget.widgetType;
+                          this.text = widget.text;
+                          this.size = widget.size;
+                      }
+                  );
+              }
+          );
   }
+
+    createHeader() {
+      const newHead = {
+          widgetType: 'HEADING',
+          pageId: this.pid,
+          size: this.size,
+          text: this.text
+      }
+      const updateHead = {
+          widgetType: 'HEADING',
+          pageId: this.pid,
+          size: this.size,
+          text: this.text,
+          _id: this.wgid
+      }
+      if (this.wgid) {
+          this.widgetService.updateWidget(this.wgid, updateHead)
+              .subscribe((widgets: any[]) => {
+                  this.widgets = widgets;
+              });
+      } else {
+          this.widgetService.createWidget(this.pid, newHead)
+              .subscribe((widgets: any[]) => {
+                  this.widgets = widgets;
+              });
+      }
+    }
+
+    deleteHeader() {
+        this.widgetService.deleteWidget(this.wgid)
+            .subscribe((widgets) => {
+                this.widgets = widgets;
+                this.router.navigate(['/user/' + this.uid + '/website/' + this.wid + '/page/' + this.pid + '/widget']);
+            });
+    }
 
 }

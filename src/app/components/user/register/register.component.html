@@ -2,18 +2,21 @@
   <h1>Register</h1>
   <label>Username</label>
   <input placeholder="username"
+         id="username"
+         [(ngModel)]="username"
          type="text"
          class="form-control"/>
   <label>Password</label>
   <input placeholder="password"
          type="password"
+         id="password"
+         [(ngModel)]="password"
          class="form-control"/>
   <label>Verify Password</label>
   <input placeholder="verify password"
          type="password2"
          class="form-control"/>
-  <a [routerLink]="['/user/:uid']"
-     class="btn btn-primary btn-block">
+  <a (click)="createUser()" class="btn btn-primary btn-block">
     Register
   </a>
   <a [routerLink]="['/login']"

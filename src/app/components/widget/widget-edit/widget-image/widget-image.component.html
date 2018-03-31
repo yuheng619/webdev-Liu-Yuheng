@@ -6,7 +6,7 @@
       <span class="glyphicon glyphicon-chevron-left"></span>
     </a>
     <div class="container-fluid">
-      <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']" class="pull-right navbar-text">
+      <a (click)="createImage()" [routerLink]="['/user/' + uid + '/website/'+ wid +'/page/'+ pid +'/widget/new']" class="pull-right navbar-text">
         <span class="glyphicon glyphicon-ok"></span>
       </a>
       <div class="navbar-header">
@@ -47,8 +47,7 @@
 
   <a class="btn btn-primary btn-block"
      [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">Upload image</a>
-  <a class="btn btn-danger btn-block"
-     [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">Delete</a>
+  <a (click)="deleteImage()" class="btn btn-danger btn-block">Delete</a>
   <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
       <p class="navbar-text pull-right">

@@ -18,20 +18,35 @@ export class ProfileComponent implements OnInit {
   email: string;
   firstname: string;
   lastname: string;
+  password: string;
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute) { }
 
 
+  updateUser() {
+      this.user = {
+          username: this.username,
+          password: this.password,
+          firstName: this.firstname,
+          lastName: this.lastname,
+          _id: this.uid
+      };
+      this.userService.updateUser(this.uid, this.user)
+          .subscribe((updateUser) => {
+              this.user = updateUser;
+          });
+  }
+
   ngOnInit() {
-    this.activatedRoute.params
-        .subscribe(
-            (params: any) => {
-              this.uid = params['uid'];
-            }
-        );
-  this.user = this.userService.findUserById(this.uid);
-  this.username = this.user['username'];
-  this.email = this.user['email'];
-  this.firstname = this.user['firstName'];
-  this.lastname = this.user['lastName'];
+    this.activatedRoute.params.subscribe(params => {
+      this.uid = params['uid'];
+      this.userService.findUserById(this.uid)
+          .subscribe((user: any) => {
+            this.user = user;
+            this.username = this.user['username'];
+            this.email = this.user['email'];
+            this.firstname = this.user['firstName'];
+            this.lastname = this.user['lastName'];
+          });
+      });
   }
 }

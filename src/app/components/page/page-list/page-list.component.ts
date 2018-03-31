@@ -12,16 +12,23 @@ export class PageListComponent implements OnInit {
   wid: string;
   name: any[];
   pages: any[];
+  uid: string;
+  pid: string;
   constructor(private _pageService: PageService, private activatedRoute: ActivatedRoute) { }
   ngOnInit() {
       this.activatedRoute.params
           .subscribe(
               (params: any) => {
                   this.wid = params['wid'];
+                  this.uid = params['uid'];
+                  // this.pid = params['pid'];
               }
           );
 
-      this.pages = this._pageService.findPageByWebsiteId(this.wid);
+      this._pageService.findPageByWebsiteId(this.wid)
+          .subscribe((pages: any[]) => {
+              this.pages = pages;
+          });
   }
 
 }

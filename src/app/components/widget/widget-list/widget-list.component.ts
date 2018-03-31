@@ -10,7 +10,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class WidgetListComponent implements OnInit {
 
-    pId: string;
+    uid: string;
+    wid: string;
+    pid: string;
     widgets: any;
 
     constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute, protected _sanitizer: DomSanitizer) { }
@@ -19,10 +21,17 @@ export class WidgetListComponent implements OnInit {
         this.activatedRoute.params
             .subscribe(
                 (params: any) => {
-                    this.pId = params['pid'];
+                    this.uid = params['uid'];
+                    this.wid = params['wid'];
+                    this.pid = params['pid'];
+                    this.widgetService.findWidgetsByPageId(this.pid)
+                        .subscribe(
+                            (widgets) => {
+                                this.widgets = widgets;
+                            }
+                        );
                 }
             );
-        this.widgets = this.widgetService.findWidgetsByPageId(this.pId);
     }
 
     santinizeUrl(url: string) {

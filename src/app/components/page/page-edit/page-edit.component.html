@@ -6,8 +6,8 @@
       <span class="glyphicon glyphicon-chevron-left"></span>
     </a>
     <div class="container-fluid">
-      <a [routerLink]="['/user/:uid/website/:wid/page']" class="pull-right navbar-text">
-        <span class="glyphicon glyphicon-ok"></span>
+      <a [routerLink]="['/user/' + userId + '/website/' + websiteId + '/page']" class="pull-right navbar-text">
+        <span (click) = "updatePage()" class="glyphicon glyphicon-ok"></span>
       </a>
       <div class="navbar-header">
         <a class="navbar-brand">
@@ -30,8 +30,7 @@
          class="form-control"
          id="description"
          placeholder="Page Title"/>
-  <a class="btn btn-danger btn-block"
-     a [routerLink]="['/user/:uid/website/:wid/page']">Delete</a>
+  <a (click)=deletePage(pageId) class="btn btn-danger btn-block">Delete</a>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">

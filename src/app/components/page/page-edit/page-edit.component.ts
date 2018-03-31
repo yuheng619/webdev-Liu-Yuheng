@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PageService} from '../../../services/page.service.client';
 import {ActivatedRoute} from '@angular/router';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -12,16 +13,41 @@ export class PageEditComponent implements OnInit {
 
   // properties
   pageId: string;
+  userId: string
   page = {};
+  pages: any[];
   name: String;
   description: String;
-  constructor(private pageService: PageService, private activatedRoute: ActivatedRoute) { }
+  websiteId: String;
+  constructor(private pageService: PageService, private activatedRoute: ActivatedRoute, private router: Router) { }
+
+  deletePage(pageId: string) {
+    this.pageService.deletePage(pageId)
+        .subscribe((pages) => {
+          this.pages = pages;
+          this.router.navigate(['/user/' + this.userId + '/website/' + this.websiteId + '/page']);
+        });
+    }
+    updatePage() {
+      this.page = {
+        websiteId: this.websiteId,
+        name: this.name,
+        description: this.description,
+        _id: this.pageId
+      };
+      this.pageService.updatePage(this.pageId, this.page)
+          .subscribe((updatePage) => {
+            this.page = updatePage;
+          });
+    }
 
   ngOnInit() {
     this.activatedRoute.params
         .subscribe(
             (params: any) => {
               this.pageId = params['pid'];
+              this.userId = params['uid'];
+              this.websiteId = params['wid'];
             }
         )
     this.page = this.pageService.findPageById(this.pageId);

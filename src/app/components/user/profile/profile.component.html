@@ -10,8 +10,8 @@
 
     <!--tick mark-->
     <p class="navbar-text pull-right">
-      <a [routerLink]="['/user/:uid']" class="navbar-link">
-        <span class="glyphicon glyphicon-ok navbar-white"></span>
+      <a [routerLink]="['/user/' +  uid]" class="navbar-link">
+        <span (click)="updateUser()" class="glyphicon glyphicon-ok navbar-white"></span>
       </a>
     </p>
 
@@ -27,7 +27,7 @@
              name="username"
              type="text"
              class="form-control"
-             id="username" placeholder="Alice">
+             id="username">
     </div>
   </form>
 
@@ -38,7 +38,7 @@
              name="email"
              type="email"
              class="form-control"
-             id="email">
+             id="email" >
     </div>
   </form>
 
@@ -60,11 +60,11 @@
              name="last"
              type="text"
              class="form-control"
-             id="lastName">
+             id="lastName" >
     </div>
   </form>
   <a class="btn btn-primary btn-block"
-     [routerLink]="['/user/:uid/website']">Websites</a>
+     [routerLink]="['/user/'+ uid + '/website']">Websites</a>
   <a class="btn btn-danger btn-block "
      [routerLink]="['/login']" >Logout</a>
 
@@ -74,7 +74,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom navbar-blue">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a [routerLink]="['/user/:uid']">
+      <a [routerLink]="['/user',uid]">
         <span class="glyphicon glyphicon-user navbar-white"></span>
       </a>
     </p>

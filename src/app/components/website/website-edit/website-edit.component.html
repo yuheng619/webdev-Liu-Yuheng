@@ -28,8 +28,8 @@
     <div class="col-sm-9 col-xs-12">
       <nav class="navbar navbar-default navbar-blue">
         <div class="container-fluid">
-          <a [routerLink]="['/user/:uid/website']" class="pull-right navbar-text">
-            <span class="glyphicon glyphicon-ok"></span>
+          <a [routerLink]="['/user/' + userId + '/website']" class="pull-right navbar-text">
+            <span (click)="updateWebsite()" class="glyphicon glyphicon-ok"></span>
           </a>
           <div class="navbar-header">
             <a class="navbar-brand">
@@ -51,8 +51,7 @@
       <textarea [(ngModel)]="description"
                 class="form-control"
                 id="description"></textarea>
-      <a class="btn btn-danger btn-block"
-         [routerLink]="['/user/:uid/website']">Delete</a>
+      <a (click)= "deleteWebsite(websiteId)" class="btn btn-danger btn-block">Delete</a>
     </div>
     <nav class="navbar navbar-default navbar-fixed-bottom navbar-blue">
       <div class="container-fluid">

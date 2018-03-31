@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class PageService {
-    constructor() {
+    constructor(private _http: Http) {
     }
 
     pages = [
@@ -22,19 +22,26 @@ export class PageService {
     };
 
     createPage(websiteId, page) {
-        page.websiteId = websiteId;
-        this.pages.push(page);
-        return page;
+        const url = 'http://localhost:3100/api/website/' + websiteId + '/page';
+        return this._http.post(url, page)
+            .map((response: Response) => {
+                return response.json();
+            });
     }
 
     findPageByWebsiteId(websiteId: string) {
-        const pages_websiteId = []
+        const url = 'http://localhost:3100/api/website/' + websiteId + '/page';
+        return this._http.get(url)
+            .map((response: Response) => {
+                return response.json();
+            });
+        /*const pages_websiteId = []
         for (let x = 0; x < this.pages.length; x++) {
             if (this.pages[x].websiteId === websiteId) {
                 pages_websiteId.push(this.pages[x]);
             }
         }
-        return pages_websiteId;
+        return pages_websiteId;*/
     }
 
     findPageById(pageId: string) {
@@ -46,18 +53,23 @@ export class PageService {
     }
 
     updatePage(pageId, page) {
-        for (let x = 0; x < this.pages.length; x++) {
+        const url = 'http://localhost:3100/api/page/' + pageId;
+        return this._http.put(url, page)
+            .map((response: Response) => {
+                return response.json;
+            });
+        /*for (let x = 0; x < this.pages.length; x++) {
             if (this.pages[x]._id === pageId) {
                 this.pages[x] = page;
             }
-        }
+        }*/
     }
 
     deletePage(pageId) {
-        for (let x = 0; x < this.pages.length; x++) {
-            if (this.pages[x]._id === pageId) {
-                delete this.pages[x];
-            }
-        }
+        const url = 'http://localhost:3100/api/page/' + pageId;
+        return this._http.delete(url)
+            .map((response: Response) => {
+                return response.json();
+            });
     }
 }

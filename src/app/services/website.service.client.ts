@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class WebsiteService {
-    constructor() {
+    constructor(private _http: Http) {
     }
 
     websites = [
@@ -26,19 +26,29 @@ export class WebsiteService {
     };
 
     createWebsite(userId, website) {
-        website.developerId = userId;
+        const url = 'http://localhost:3100/api/user/' + userId + '/website';
+        return this._http.post(url, website)
+            .map((response: Response) => {
+               return response.json();
+            });
+        /*website.developerId = userId;
         this.websites.push(website);
-        return website;
+        return website;*/
     }
 
     findWebsitesByUser(userId: string) {
-        const websites_userId = [];
+        const url = 'http://localhost:3100/api/user/' + userId + '/website';
+        return this._http.get(url)
+            .map((response: Response) => {
+                return response.json();
+            });
+   /*     const websites_userId = [];
         for (let x = 0; x < this.websites.length; x++) {
             if (this.websites[x].developerId === userId) {
                 websites_userId.push(this.websites[x]);
             }
         }
-        return websites_userId;
+        return websites_userId;*/
     }
 
     findWebsitesById(websiteId: string) {
@@ -50,18 +60,28 @@ export class WebsiteService {
     }
 
     updateWebsite(websiteId, website) {
-        for (let x = 0; x < this.websites.length; x++) {
+        /*for (let x = 0; x < this.websites.length; x++) {
             if (this.websites[x]._id === websiteId) {
                 this.websites[x] = website;
             }
-        }
+        }*/
+        const url = 'http://localhost:3100/api/website/' + websiteId;
+        return this._http.put(url, website)
+            .map((response: Response) => {
+                return response.json;
+            });
     }
 
-    deleteWebsite(websiteId) {
-        for (let x = 0; x < this.websites.length; x++) {
+    deleteWebsite(websiteId: string) {
+        const url = 'http://localhost:3100/api/website/' + websiteId;
+        return this._http.delete(url)
+            .map((response: Response) => {
+                return response.json();
+            });
+        /*for (let x = 0; x < this.websites.length; x++) {
             if (this.websites[x]._id === websiteId) {
                 delete this.websites[x];
             }
-        }
+        }*/
     }
 }

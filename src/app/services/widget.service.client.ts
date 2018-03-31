@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class WidgetService {
-    constructor() {
+    constructor(private _http: Http) {
     }
 
     widgets = [
@@ -28,42 +28,29 @@ export class WidgetService {
     };
 
     createWidget(pageId, widget) {
-        widget.pageId = pageId;
-        this.widgets.push(widget);
-        return widget;
+        const url = 'http://localhost:3100/api/page/' + pageId + '/widget';
+        return this._http.post(url, widget).map(response => response.json());
     }
 
     findWidgetsByPageId(pageId: string) {
-        const widgets_pageId = [];
-        for (let x = 0; x < this.widgets.length; x++) {
-            if (this.widgets[x].pageId === pageId) {
-                widgets_pageId.push(this.widgets[x]);
-            }
-        }
-        return widgets_pageId;
+        const url = 'http://localhost:3100/api/page/' + pageId + '/widget';
+        return this._http.get(url).map(response => response.json());
     }
 
     findWidgetById(widgetId: string) {
-        for (let x = 0; x < this.widgets.length; x++) {
-            if (this.widgets[x]._id === widgetId) {
-                return this.widgets[x];
-            }
-        }
+        const url = 'http://localhost:3100/api/widget/' + widgetId;
+        return this._http.get(url).map(response => response.json());
     }
 
     updateWidget(widgetId, widget) {
-        for (let x = 0; x < this.widgets.length; x++) {
-            if (this.widgets[x]._id === widgetId) {
-                this.widgets[x] = widget;
-            }
-        }
+        const url = 'http://localhost:3100/api/widget/' + widgetId;
+        return this._http.put(url, widget)
+            .map(response => response.json());
     }
 
     deleteWidget(widgetId) {
-        for (let x = 0; x < this.widgets.length; x++) {
-            if (this.widgets[x]._id === widgetId) {
-                delete this.widgets[x];
-            }
-        }
+        const url = 'http://localhost:3100/api/widget/' + widgetId;
+        return this._http.delete(url)
+            .map(response => response.json());
     }
 }
