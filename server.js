@@ -29,4 +29,5 @@ page(app);
 
 var widget = require("./services/widget.service.server");
 widget(app);
+app.use(express.static('dist'));
 server.listen( port );
