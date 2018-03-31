@@ -18,6 +18,8 @@ app.use(function(req, res, next){
 const port = process.env.PORT || '3100';
 app.set('port', port);
 const server = http.createServer(app);
+require("./model/model.server");
+
 var user = require("./services/user.service.server");
 user(app);
 
@@ -29,5 +31,6 @@ page(app);
 
 var widget = require("./services/widget.service.server");
 widget(app);
+
 app.use(express.static('dist'));
 server.listen( port );
