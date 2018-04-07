@@ -1187,7 +1187,7 @@ var WebsiteNewComponent = (function () {
     }
     WebsiteNewComponent.prototype.createWebsite = function (name) {
         var _this = this;
-        var website = new __WEBPACK_IMPORTED_MODULE_1__models_website_website_model_client__["a" /* Website */]('', name, '');
+        var website = new __WEBPACK_IMPORTED_MODULE_1__models_website_website_model_client__["a" /* Website */](name, this.description);
         this._websiteService.createWebsite(this.userId, website)
             .subscribe((function (websites) {
             _this.websites = websites;
@@ -1827,8 +1827,7 @@ var _a, _b, _c;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Website; });
 var Website = (function () {
-    function Website(_id, name, description) {
-        this._id = _id;
+    function Website(name, description) {
         this.name = name;
         this.description = description;
     }

@@ -18,8 +18,10 @@ module.exports = function (app) {
 
     function findWebsitesForUser(req, res){
         var userId = req.params['userId'];
+        console.log(userId);
         websiteModel.findAllWebsitesForUser(userId)
             .then(function (websites) {
+                console.log(websites);
                 res.json(websites);
             });
         /*var websites = [];
