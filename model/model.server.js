@@ -6,8 +6,6 @@ if(process.env.MLAB_USERNAME_WEBDEV) { // check if running remotely
     connectionString += '@ds229878.mlab.com:29878/heroku_5czr6h5n';
 
 }
-console.log(connectionString);
-connectionString = 'mongodb://web_dev:123@ds229878.mlab.com:29878/heroku_5czr6h5n';
 var mongoose = require('mongoose');
 mongoose.connect(connectionString);
 // Get Mongoose to use the global promise library
