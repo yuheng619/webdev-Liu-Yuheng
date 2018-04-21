@@ -17,6 +17,7 @@ export class WebsiteEditComponent implements OnInit {
   websites: any[];
   name: string;
   description: string;
+  errorFlag: boolean;
   constructor(private _websiteService: WebsiteService, private activatedRoute: ActivatedRoute,
   private router: Router) { }
 
@@ -35,6 +36,10 @@ export class WebsiteEditComponent implements OnInit {
           _id: this.websiteId,
           developerId: this.userId
       };
+      if (name === null) {
+          this.errorFlag = true;
+          return;
+      }
       this._websiteService.updateWebsite(this.websiteId, this.website)
           .subscribe((updatedWebsite) => {
               this.website = updatedWebsite;

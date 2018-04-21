@@ -6,6 +6,10 @@
       <span class="glyphicon glyphicon-chevron-left"></span>
     </a>
     <div class="container-fluid">
+      <div *ngIf="errorFlag"
+           class="alert alert-danger">
+        please enter page name!
+      </div>
       <a [routerLink]="['/user/'+userId+'/website/'+websiteId+'/page']" class="pull-right navbar-text">
         <span (click)="createPage()" class="glyphicon glyphicon-ok"></span>
       </a>

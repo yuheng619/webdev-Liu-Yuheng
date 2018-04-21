@@ -1,12 +1,25 @@
 module.exports = function (app){
+    var passport = require('passport');
+    var LocalStrategy = require('passport-local').Strategy;
+    passport.use(new LocalStrategy(localStrategy));
 
+    const saltRounds = 10;
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
+
+    var bcrypt = require("bcrypt-nodejs");
+    
     var userModel = require("../model/user/user.model.server");
     app.post("/api/user", createUser);
     app.get("/api/user/:userId", findUserById);
     app.get("/api/user",findUser);
     app.delete("/api/user/:userId", deleteUser);
     app.put("/api/user/:userId", updateUser);
+    app.post ('/api/login', login);
+    app.post('/api/logout', logout);
+    app.post('/api/register', register);
     // app.get("/api/user", findUserByUsername);
+    app.get('/api/loggedin', loggedin);
 
     var users = [
         {_id: '123', username: 'alice', password: 'alice', firstName: 'Alice', lastName: 'Wonder'},
@@ -14,6 +27,59 @@ module.exports = function (app){
         {_id: '345', username: 'charly', password: 'charly', firstName: 'Charly', lastName: 'Garcia'}
     ];
 
+
+    function login(req, res) {
+        var user_login = req.body;
+        var username = user_login.username;
+        var password = '';
+        console.log(username);
+        userModel.findUserByUsername(username)
+            .then(function(user) {
+                password = user.password;
+                //console.log(password);
+                if (user && bcrypt.compareSync( user_login.password, password)) {
+                    //console.log("40");
+                    return res.json(user);
+                }
+                else {
+                    //console.log("44");
+                    res.status(400).send(user);
+                }
+            });
+
+    }
+
+    function logout(req, res) {
+        req.logout();
+        res.send(200);
+    }
+
+    function register(req, res) {
+        var user = req.body;
+        var salt = bcrypt.genSaltSync(saltRounds);
+        user.password = bcrypt.hashSync(user.password, salt);
+        userModel
+            .createUser(user)
+            .then(
+                function(user){
+                    if(user){
+                        req.login(user, function(err) {
+                            if(err) {
+                                console.log(err);
+                                res.status(400).send(err);
+                            }
+                            else {
+                                res.json(user);
+                            }
+                        });
+                    }
+                }
+            );
+    }
+
+    function loggedin(req, res) {
+        res.send(req.isAuthenticated() ? req.user : '0');
+    }
     function createUser(req, res){
         /* var userId = Math.floor(Math.random()*100 + 100).toString();
          var user = req.body;
@@ -124,5 +190,39 @@ module.exports = function (app){
             findUserByUsername(req, res);
         }*/
     }
+
+    function serializeUser(user, done) {
+        done(null, user);
+    }
+
+    function deserializeUser(user, done) {
+        userModel.findUserById(user._id)
+            .then(
+                function(user){
+                    done(null, user);
+                },
+                function(err){
+                    done(null, user);
+                }
+            )
+    }
+
+    function localStrategy(username, password, done) {
+        userModel
+            .findUserByCredentials(username, password)
+            .then(
+                function(user) {
+                    if(user.username === username && user.password === password) {
+                        return done(null, user);
+                    } else {
+                        return done(null,false);
+                    }
+                },
+                function(err) {
+                    if (err) { return done(err); }
+                }
+            );
+    }
+
 
 };

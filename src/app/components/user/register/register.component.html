@@ -1,20 +1,30 @@
 <div class="container">
+  <div *ngIf="errorFlag"
+       class="alert alert-danger">
+    passwords do not match!f
+  </div>
   <h1>Register</h1>
   <label>Username</label>
   <input placeholder="username"
          id="username"
          [(ngModel)]="username"
          type="text"
+         required
          class="form-control"/>
   <label>Password</label>
   <input placeholder="password"
          type="password"
          id="password"
+         required
+         data-match="confirmedpassword"
          [(ngModel)]="password"
          class="form-control"/>
   <label>Verify Password</label>
   <input placeholder="verify password"
-         type="password2"
+         [(ngModel)]="confirmedpassword"
+         type="password"
+         required
+         data-match="password"
          class="form-control"/>
   <a (click)="createUser()" class="btn btn-primary btn-block">
     Register

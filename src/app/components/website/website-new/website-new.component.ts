@@ -16,7 +16,12 @@ export class WebsiteNewComponent implements OnInit {
   name: string;
   description: string;
   websites: any[];
+  errorFlag: boolean;
   createWebsite(name: String) {
+    if (name === null) {
+      this.errorFlag = true;
+      return;
+    }
     const website: Website = new Website(name, this.description);
     this._websiteService.createWebsite(this.userId, website)
         .subscribe((websites => {

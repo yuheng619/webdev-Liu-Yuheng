@@ -4,9 +4,16 @@ const app = express();
 const path = require('path');
 const http = require('http');
 
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var passport = require('passport');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cookieParser('secret'));
+app.use(session({ secret: process.env.SESSION_SECRET}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(function(req, res, next){
     res.header("Access-Control-Allow-Origin", "*");

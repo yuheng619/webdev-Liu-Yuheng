@@ -1,4 +1,8 @@
 <div class="container-fluid" style="height: 100%;">
+  <div *ngIf="errorFlag"
+       class="alert alert-danger">
+    must enter website name!
+  </div>
   <div class="row" style="position: relative;height: 100%;">
     <div class="col-xs-3 hidden-xs"
          style="width: 25%;overflow: scroll;bottom: 166px;top: 0px;">

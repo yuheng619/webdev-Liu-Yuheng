@@ -19,6 +19,7 @@ export class PageEditComponent implements OnInit {
   name: String;
   description: String;
   websiteId: String;
+  errorFlag: boolean;
   constructor(private pageService: PageService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   deletePage(pageId: string) {
@@ -29,6 +30,10 @@ export class PageEditComponent implements OnInit {
         });
     }
     updatePage() {
+      if (this.name === null) {
+          this.errorFlag = true;
+          return;
+      }
       this.page = {
         websiteId: this.websiteId,
         name: this.name,

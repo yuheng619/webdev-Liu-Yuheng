@@ -20,6 +20,7 @@ export class WidgetYoutubeComponent implements OnInit {
     text: string;
     url: string;
     width: string;
+    errorFlag: boolean;
     constructor(private widgetService: WidgetService, private activateRoute: ActivatedRoute, private router: Router) { }
   ngOnInit() {
       this.activateRoute.params
@@ -43,6 +44,10 @@ export class WidgetYoutubeComponent implements OnInit {
   }
 
     createYoutube() {
+        if (this.name === null) {
+            this.errorFlag = true;
+            return;
+        }
         const newYoutube = {
             widgetType: 'YOUTUBE',
             pageId: this.pid,

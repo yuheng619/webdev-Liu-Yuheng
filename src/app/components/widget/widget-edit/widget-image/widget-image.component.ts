@@ -22,6 +22,7 @@ export class WidgetImageComponent implements OnInit {
     text: string;
     url: string;
     width: string;
+    errorFlag: boolean;
     constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
     ngOnInit() {
@@ -46,6 +47,10 @@ export class WidgetImageComponent implements OnInit {
     }
 
     createImage() {
+        if (this.name === null) {
+            this.errorFlag = true;
+            return;
+        }
         const newImage = {
             widgetType: 'IMAGE',
             pageId: this.pid,

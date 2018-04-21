@@ -17,7 +17,12 @@ export class PageNewComponent implements OnInit {
   websiteId: string;
   pageId: string;
   pages: any[];
+  errorFlag: boolean;
   createPage() {
+    if (this.name === null) {
+        this.errorFlag = true;
+        return;
+    }
     const newPage = {
       _id: this.pageId,
         name: this.name,

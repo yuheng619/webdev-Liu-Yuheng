@@ -6,6 +6,10 @@
       <span class="glyphicon glyphicon-chevron-left"></span>
     </a>
     <div class="container-fluid">
+      <div *ngIf="errorFlag"
+           class="alert alert-danger">
+        must enter widget name!
+      </div>
       <a (click)="createHeader()" [routerLink]="['/user/' + uid + '/website/'+ wid +'/page/'+ pid +'/widget/new']" class="pull-right navbar-text">
         <span class="glyphicon glyphicon-ok"></span>
       </a>
@@ -24,6 +28,7 @@
   <input [(ngModel)] = "name"
          class="form-control"
          id="name"
+         required
          placeholder="Facebook"/>
   <label for="description">
     Text

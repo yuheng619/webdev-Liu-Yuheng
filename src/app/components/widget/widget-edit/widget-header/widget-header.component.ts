@@ -20,6 +20,7 @@ export class WidgetHeaderComponent implements OnInit {
   text: string;
   size: string;
   widgets: any[];
+  errorFlag: boolean;
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -43,6 +44,10 @@ export class WidgetHeaderComponent implements OnInit {
   }
 
     createHeader() {
+      if (this.name === null) {
+          this.errorFlag = true;
+          return;
+      }
       const newHead = {
           widgetType: 'HEADING',
           pageId: this.pid,

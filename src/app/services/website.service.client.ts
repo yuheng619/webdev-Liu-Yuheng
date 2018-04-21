@@ -26,7 +26,7 @@ export class WebsiteService {
     };
 
     createWebsite(userId, website) {
-        const url = '/api/user/' + userId + '/website';
+        const url = 'http://localhost:3100/api/user/' + userId + '/website';
         return this._http.post(url, website)
             .map((response: Response) => {
                return response.json();
@@ -37,7 +37,7 @@ export class WebsiteService {
     }
 
     findWebsitesByUser(userId: string) {
-        const url = '/api/user/' + userId + '/website';
+        const url = 'http://localhost:3100/api/user/' + userId + '/website';
         return this._http.get(url)
             .map((response: Response) => {
                 return response.json();
@@ -65,7 +65,7 @@ export class WebsiteService {
                 this.websites[x] = website;
             }
         }*/
-        const url = '/api/website/' + websiteId;
+        const url = 'http://localhost:3100/api/website/' + websiteId;
         return this._http.put(url, website)
             .map((response: Response) => {
                 return response.json;
@@ -73,7 +73,7 @@ export class WebsiteService {
     }
 
     deleteWebsite(websiteId: string) {
-        const url = '/api/website/' + websiteId;
+        const url = 'http://localhost:3100/api/website/' + websiteId;
         return this._http.delete(url)
             .map((response: Response) => {
                 return response.json();
