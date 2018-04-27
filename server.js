@@ -23,6 +23,7 @@ app.use(function(req, res, next){
 
 });
 const port = process.env.PORT || '3100';
+console.log('port: ' + port);
 app.set('port', port);
 const server = http.createServer(app);
 require("./model/model.server");
