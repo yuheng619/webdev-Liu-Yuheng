@@ -28,12 +28,12 @@ export class WidgetService {
     };
 
     createWidget(pageId, widget) {
-        const url = 'http://localhost:3100/api/page/' + pageId + '/widget';
+        const url = '/api/page/' + pageId + '/widget';
         return this._http.post(url, widget).map(response => response.json());
     }
 
     findWidgetsByPageId(pageId: string) {
-        const url = 'http://localhost:3100/api/page/' + pageId + '/widget';
+        const url = '/api/page/' + pageId + '/widget';
         return this._http.get(url)
             .map((response: Response) => {
                 return response.json();
@@ -41,12 +41,12 @@ export class WidgetService {
     }
 
     findWidgetById(widgetId: string) {
-        const url = 'http://localhost:3100/api/widget/' + widgetId;
+        const url = '/api/widget/' + widgetId;
         return this._http.get(url).map(response => response.json());
     }
 
     updateWidget(widgetId, widget) {
-        const url = 'http://localhost:3100/api/widget/' + widgetId;
+        const url = '/api/widget/' + widgetId;
         return this._http.put(url, widget)
             .map((response: Response) => {
                 return response.json();
@@ -54,7 +54,7 @@ export class WidgetService {
     }
 
     deleteWidget(widgetId) {
-        const url = 'http://localhost:3100/api/widget/' + widgetId;
+        const url = '/api/widget/' + widgetId;
         return this._http.delete(url)
             .map((response: Response) => {
                 return response.json;

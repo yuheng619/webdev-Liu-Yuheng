@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;overflow: hidden;">
+<head>
+  <!-- Meta tags for making website for mobile-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="initial-scale=1.25, user-scalable=no">
+
+
+  <meta charset="UTF-8">
+  <title>User Login</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- STYLE sheet comes after all the libraries are loaded. Document style-->
+
+  <link href="../../../website-edit.css" rel="stylesheet"/>
+</head>
+<body style="height: 100%;">
+
+<div class="container-fluid" style="height: 100%;">
+  <div class="row" style="position: relative;height: 100%;">
+    <div class="col-xs-3 hidden-xs">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <a href="website-list.html" class="pull-right navbar-text">
+            <span class="glyphicon glyphicon-plus"></span>
+          </a>
+          <a href="website-list.html" class="pull-left navbar-text">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+          <div class="navbar-header">
+            <a class="navbar-brand">
+              Websites
+            </a>
+          </div>
+        </div>
+      </nav>
+      <ul class="list-group">
+        <li class="list-group-item">
+          Blogging App
+          <a class="pull-right">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </li>
+        <li class="list-group-item">
+          Address Book App
+          <a class="pull-right">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </li>
+        <li class="list-group-item">
+          Script Testing App
+          <a class="pull-right">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </li>
+        <li class="list-group-item">
+          Blogger
+          <a class="pull-right">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-9 col-xs-12">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <a href="website-list.html" class="pull-right navbar-text">
+            <span class="glyphicon glyphicon-ok"></span>
+          </a>
+          <div class="navbar-header">
+            <a class="navbar-brand">
+              Edit Websites
+            </a>
+          </div>
+        </div>
+      </nav>
+      <label for="name">
+        Website Name
+      </label>
+      <input class="form-control"
+             id="name"
+             placeholder="Facebook"/>
+      <label for="description">
+        Website Description
+      </label>
+      <textarea class="form-control"
+                id="description"></textarea>
+      <a class="btn btn-danger btn-block"
+         href="../website/website-list.html">Delete</a>
+    </div>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+      <div class="container-fluid">
+        <p class="navbar-text pull-right">
+          <a href="../user/profile.html">
+            <span class="glyphicon glyphicon-user"></span>
+          </a>
+        </p>
+
+      </div>
+    </nav>
+  </div>
+</div>
+</body>
+</html>

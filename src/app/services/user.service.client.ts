@@ -31,17 +31,17 @@ export class UserService {
         /* user._id = '456';
          this.users.push(user);
          return user;*/
-        const url = 'http://localhost:3100/api/user/';
+        const url = '/api/user/';
         return this._http.post(url, user).map(response => response.json());
     }
 
     findUserById(userId: string) {
-        const url = 'http://localhost:3100/api/user/' + userId;
+        const url = '/api/user/' + userId;
         return this._http.get(url).map(response => response.json());
     }
 
     findUserByUsername(username: string) {
-        const url = 'http://localhost:3100/api/user?username=' + username;
+        const url = '/api/user?username=' + username;
         return this._http.get(url)
             .map(response => response.json());
         /*for (let x = 0; x < this.users.length; x++) {
@@ -57,7 +57,7 @@ export class UserService {
         //        return this.users[x];
         //    }
         // this._http.get('some_url' + ).
-        const url = 'http://localhost:3100/api/user?username=' + username + '&password=' + password;
+        const url = '/api/user?username=' + username + '&password=' + password;
         return this._http.get(url)
             .map(response => response.json());
 
@@ -69,7 +69,7 @@ export class UserService {
                 this.users[x] = user;
             }
         }*/
-        const url = 'http://localhost:3100/api/user/' + userId;
+        const url = '/api/user/' + userId;
         return this._http.put(url, user)
             .map(response => response.json());
     }
@@ -80,7 +80,7 @@ export class UserService {
                 delete this.users[x];
             }
         }*/
-        const url = 'http://localhost:3100/api/' + userId;
+        const url = '/api/' + userId;
         return this._http.delete(url)
             .map(response => response.json());
     }

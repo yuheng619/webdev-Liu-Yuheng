@@ -10,7 +10,7 @@ export class TodoService {
   // findAllTodos(): Todo[] {
   findAllTodos() {
     console.log('findAllTodos');
-    return this.http.get('http://localhost:3100/api/todo')
+    return this.http.get('/api/todo')
       .map(
         (res: Response) => {
           const data = res.json();
@@ -22,7 +22,7 @@ export class TodoService {
   createTodo(todo: Todo) {
     const todoCopy = { ...todo };
     this.todos.push(todoCopy);
-    return this.http.post('http://localhost:3100/api/todo', todo)
+    return this.http.post('/api/todo', todo)
       .map(
         (res: Response) => {
           return res.json();

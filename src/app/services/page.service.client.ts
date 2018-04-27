@@ -22,7 +22,7 @@ export class PageService {
     };
 
     createPage(websiteId, page) {
-        const url = 'http://localhost:3100/api/website/' + websiteId + '/page';
+        const url = '/api/website/' + websiteId + '/page';
         return this._http.post(url, page)
             .map((response: Response) => {
                 return response.json();
@@ -30,7 +30,7 @@ export class PageService {
     }
 
     findPageByWebsiteId(websiteId: string) {
-        const url = 'http://localhost:3100/api/website/' + websiteId + '/page';
+        const url = '/api/website/' + websiteId + '/page';
         return this._http.get(url)
             .map((response: Response) => {
                 return response.json();
@@ -45,12 +45,12 @@ export class PageService {
     }
 
     findPageById(pageId: string) {
-        const url = 'http://localhost:3100/api/page/' + pageId;
+        const url = '/api/page/' + pageId;
         return this._http.get(url).map(response => response.json());
     }
 
     updatePage(pageId, page) {
-        const url = 'http://localhost:3100/api/page/' + pageId;
+        const url = '/api/page/' + pageId;
         return this._http.put(url, page)
             .map((response: Response) => {
                 return response.json;
@@ -63,7 +63,7 @@ export class PageService {
     }
 
     deletePage(pageId) {
-        const url = 'http://localhost:3100/api/page/' + pageId;
+        const url = '/api/page/' + pageId;
         return this._http.delete(url)
             .map((response: Response) => {
                 return response.json;
