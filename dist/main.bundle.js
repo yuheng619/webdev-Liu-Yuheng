@@ -753,7 +753,9 @@ var LoginComponent = (function () {
         this.router = router;
         this.errorMsg = 'Invalid username or password !';
     }
-    LoginComponent.prototype.ngOnInit = function () { };
+    LoginComponent.prototype.ngOnInit = function () {
+        console.log('init login component');
+    };
     LoginComponent.prototype.login = function () {
         var _this = this;
         if (this.username === null && this.password === null) {
@@ -866,6 +868,7 @@ var ProfileComponent = (function () {
     };
     ProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
+        console.log('init profile component');
         this.activatedRoute.params.subscribe(function (params) {
             _this.uid = params['uid'];
             _this.userService.findUserById(_this.uid)
@@ -963,6 +966,7 @@ var RegisterComponent = (function () {
         });
     };
     RegisterComponent.prototype.ngOnInit = function () {
+        console.log('init register component');
     };
     return RegisterComponent;
 }());
@@ -2255,7 +2259,7 @@ var UserService = (function () {
             username: username,
             password: password
         };
-        return this._http.post(this.baseUrl + '/api/login', body)
+        return this._http.post('/api/login', body)
             .map(function (res) {
             var data = res.json();
             return data;
@@ -2263,7 +2267,7 @@ var UserService = (function () {
     };
     UserService.prototype.logout = function () {
         this.options.withCredentials = true;
-        return this._http.post(this.baseUrl + '/api/logout', '')
+        return this._http.post('/api/logout', '')
             .map(function (res) {
             var data = res;
         });
@@ -2274,7 +2278,7 @@ var UserService = (function () {
             username: username,
             password: password,
         };
-        return this._http.post(this.baseUrl + '/api/register', user)
+        return this._http.post('/api/register', user)
             .map(function (res) {
             var data = res.json();
             return data;
@@ -2283,7 +2287,7 @@ var UserService = (function () {
     UserService.prototype.loggedIn = function () {
         var _this = this;
         this.options.withCredentials = true;
-        return this._http.post(this.baseUrl + '/api/loggedIn', '', this.options)
+        return this._http.post('/api/loggedIn', '', this.options)
             .map(function (res) {
             var user = res.json();
             if (user !== 0) {
@@ -2481,7 +2485,6 @@ var WidgetService = (function () {
             .map(function (response) {
             return response.json;
         });
-        ;
     };
     return WidgetService;
 }());

@@ -16,7 +16,9 @@ export class LoginComponent implements OnInit {
     errorFlag: boolean;
     errorMsg = 'Invalid username or password !';
     constructor(private userService: UserService, private router: Router) { }
-    ngOnInit() { }
+    ngOnInit() {
+        console.log('init login component');
+    }
     login( ) {
         if (this.username === null && this.password === null) {
             this.errorFlag = true;
