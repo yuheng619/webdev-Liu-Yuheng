@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -65,7 +66,10 @@ import { SharedService } from './services/shared.service.client';
     Routing
   ],
   // Client Side services here
-  providers: [ TestService, TodoService, UserService, WebsiteService, PageService, WidgetService, SharedService],
+  providers: [
+      TestService, TodoService, UserService, WebsiteService, PageService, WidgetService, SharedService,
+      { provide: LocationStrategy, useClass: HashLocationStrategy }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
