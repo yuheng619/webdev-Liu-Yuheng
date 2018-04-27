@@ -4,7 +4,7 @@
 </div>
 <nav class="navbar navbar-default navbar-fixed-top"
      style="position:relative;">
-  <a [routerLink]="['/user/:uid/website/:wid/page']" class="pull-left navbar-text">
+  <a [routerLink]="['/user/' + uid + '/website/' + wid + '/page']" class="pull-left navbar-text">
     <span class="glyphicon glyphicon-chevron-left"></span>
   </a>
   <div class="container-fluid">
@@ -53,17 +53,17 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-left">
-      <a [routerLink] = "['/user/:uid']">
+      <a [routerLink] = "['/user/' + uid]">
         <span class="glyphicon glyphicon-play"></span>
       </a>
     </p>
     <p class="navbar-text pull-left">
-      <a [routerLink] = "['/user/:uid']">
+      <a [routerLink] = "['/user/' + uid]">
         <span class="glyphicon glyphicon-eye-open"></span>
       </a>
     </p>
     <p class="navbar-text pull-right">
-      <a [routerLink] = "['/user/:uid']">
+      <a [routerLink] = "['/user/'  + uid]">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

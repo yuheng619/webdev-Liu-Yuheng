@@ -19,7 +19,7 @@ export class PageNewComponent implements OnInit {
   pages: any[];
   errorFlag: boolean;
   createPage() {
-    if (this.name === null) {
+    if (!this.name) {
         this.errorFlag = true;
         return;
     }
@@ -32,12 +32,14 @@ export class PageNewComponent implements OnInit {
     this.pageService.createPage(this.websiteId, newPage)
         .subscribe((pages) => {
           this.pages = pages;
+          this.router.navigate(['/user/' + this.userId + '/website/' + this.websiteId + '/page']);
         });
   }
 
     ngOnInit() {
         this.activatedRoute.params.subscribe(params => {
             this.websiteId = params['wid'];
+            this.userId = params['uid'];
             this.pageService.findPageByWebsiteId(this.websiteId)
                 .subscribe((pages: any[]) => {
                     this.pages = pages;

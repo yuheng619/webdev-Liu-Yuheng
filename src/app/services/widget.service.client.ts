@@ -34,7 +34,10 @@ export class WidgetService {
 
     findWidgetsByPageId(pageId: string) {
         const url = 'http://localhost:3100/api/page/' + pageId + '/widget';
-        return this._http.get(url).map(response => response.json());
+        return this._http.get(url)
+            .map((response: Response) => {
+                return response.json();
+            });
     }
 
     findWidgetById(widgetId: string) {
@@ -45,12 +48,16 @@ export class WidgetService {
     updateWidget(widgetId, widget) {
         const url = 'http://localhost:3100/api/widget/' + widgetId;
         return this._http.put(url, widget)
-            .map(response => response.json());
+            .map((response: Response) => {
+                return response.json();
+            });
     }
 
     deleteWidget(widgetId) {
         const url = 'http://localhost:3100/api/widget/' + widgetId;
         return this._http.delete(url)
-            .map(response => response.json());
+            .map((response: Response) => {
+                return response.json;
+            });;
     }
 }

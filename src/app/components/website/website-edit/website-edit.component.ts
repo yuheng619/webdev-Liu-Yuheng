@@ -14,7 +14,7 @@ export class WebsiteEditComponent implements OnInit {
   websiteId: string;
   userId: string;
   website = {};
-  websites: any[];
+  websites: any;
   name: string;
   description: string;
   errorFlag: boolean;
@@ -25,6 +25,7 @@ export class WebsiteEditComponent implements OnInit {
     this._websiteService.deleteWebsite(websiteId)
         .subscribe((websites) => {
           this.websites = websites;
+          console.log('line 28');
           this.router.navigate(['/user/' + this.userId + '/website']);
 
         });
@@ -43,6 +44,7 @@ export class WebsiteEditComponent implements OnInit {
       this._websiteService.updateWebsite(this.websiteId, this.website)
           .subscribe((updatedWebsite) => {
               this.website = updatedWebsite;
+              this.router.navigate(['/user/' + this.userId + '/website']);
           });
   }
     ngOnInit() {

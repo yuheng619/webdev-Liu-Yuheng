@@ -14,7 +14,7 @@ export class WidgetYoutubeComponent implements OnInit {
     wid: string;
     pid: string;
     wgid: string;
-    widgets: any[];
+    widgets: any;
     widget = {};
     name: string;
     text: string;
@@ -44,7 +44,7 @@ export class WidgetYoutubeComponent implements OnInit {
   }
 
     createYoutube() {
-        if (this.name === null) {
+        if (!this.name) {
             this.errorFlag = true;
             return;
         }
@@ -65,11 +65,13 @@ export class WidgetYoutubeComponent implements OnInit {
             this.widgetService.updateWidget(this.wgid, updateYoutube)
                 .subscribe((widgets: any[]) => {
                     this.widgets = widgets;
+                    this.router.navigate(['/user/' + this.uid + '/website/' + this.wid + '/page/' + this.pid + '/widget']);
                 });
         } else {
             this.widgetService.createWidget(this.pid, newYoutube)
                 .subscribe((widgets: any[]) => {
                     this.widgets = widgets;
+                    this.router.navigate(['/user/' + this.uid + '/website/' + this.wid + '/page/' + this.pid + '/widget']);
                 });
         }
     }

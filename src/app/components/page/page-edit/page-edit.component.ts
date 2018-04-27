@@ -15,7 +15,7 @@ export class PageEditComponent implements OnInit {
   pageId: string;
   userId: string
   page = {};
-  pages: any[];
+  pages: any;
   name: String;
   description: String;
   websiteId: String;
@@ -43,6 +43,7 @@ export class PageEditComponent implements OnInit {
       this.pageService.updatePage(this.pageId, this.page)
           .subscribe((updatePage) => {
             this.page = updatePage;
+              this.router.navigate(['/user/' + this.userId + '/website/' + this.websiteId + '/page']);
           });
     }
 
@@ -53,11 +54,14 @@ export class PageEditComponent implements OnInit {
               this.pageId = params['pid'];
               this.userId = params['uid'];
               this.websiteId = params['wid'];
+              this.pageService.findPageById(this.pageId)
+                  .subscribe((page: any) => {
+                      this.page = page;
+                      this.name = this.page['name'];
+                      this.description = this.page['description'];
+                  });
             }
-        )
-    this.page = this.pageService.findPageById(this.pageId);
-    this.name = this.page['name'];
-    this.description = this.page['description'];
+        );
   }
 
 }

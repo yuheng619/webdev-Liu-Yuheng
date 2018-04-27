@@ -35,10 +35,14 @@ module.exports = function (app){
         console.log(username);
         userModel.findUserByUsername(username)
             .then(function(user) {
+                console.log('login' + user);
                 password = user.password;
+                // console.log("input password:"  + user_login.password);
+                // console.log("crpyt password:" + password);
                 //console.log(password);
-                if (user && bcrypt.compareSync( user_login.password, password)) {
+                if (user && bcrypt.compareSync(user_login.password, password)) {
                     //console.log("40");
+
                     return res.json(user);
                 }
                 else {
@@ -58,6 +62,7 @@ module.exports = function (app){
         var user = req.body;
         var salt = bcrypt.genSaltSync(saltRounds);
         user.password = bcrypt.hashSync(user.password, salt);
+        console.log("register user password" + user.password);
         userModel
             .createUser(user)
             .then(

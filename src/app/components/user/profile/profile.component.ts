@@ -25,11 +25,12 @@ export class ProfileComponent implements OnInit {
   updateUser() {
       this.user = {
           username: this.username,
-          password: this.password,
           firstName: this.firstname,
           lastName: this.lastname,
-          _id: this.uid
+          _id: this.uid,
+          password: this.password
       };
+      this.user['password'] = this.password;
       this.userService.updateUser(this.uid, this.user)
           .subscribe((updateUser) => {
               this.user = updateUser;
@@ -52,6 +53,7 @@ export class ProfileComponent implements OnInit {
             this.email = this.user['email'];
             this.firstname = this.user['firstName'];
             this.lastname = this.user['lastName'];
+            this.password = this.user['password'];
           });
       });
   }

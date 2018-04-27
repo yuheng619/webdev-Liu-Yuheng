@@ -102,7 +102,7 @@ export class UserService {
 
     logout() {
         this.options.withCredentials = true;
-        return this._http.post(this.baseUrl + '/api/logout', '', this.options)
+        return this._http.post(this.baseUrl + '/api/logout', '')
             .map(
                 (res: Response) => {
                     const data = res;

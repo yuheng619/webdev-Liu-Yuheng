@@ -18,7 +18,7 @@ export class WebsiteNewComponent implements OnInit {
   websites: any[];
   errorFlag: boolean;
   createWebsite(name: String) {
-    if (name === null) {
+    if (!name) {
       this.errorFlag = true;
       return;
     }
@@ -26,6 +26,7 @@ export class WebsiteNewComponent implements OnInit {
     this._websiteService.createWebsite(this.userId, website)
         .subscribe((websites => {
           this.websites = websites;
+          this.router.navigate(['/user/' + this.userId + '/website']);
         }));
     }
   ngOnInit() {

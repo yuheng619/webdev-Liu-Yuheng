@@ -72,11 +72,11 @@ export class WebsiteService {
             });
     }
 
-    deleteWebsite(websiteId: string) {
+     deleteWebsite(websiteId: string) {
         const url = 'http://localhost:3100/api/website/' + websiteId;
         return this._http.delete(url)
             .map((response: Response) => {
-                return response.json();
+                return response.json;
             });
         /*for (let x = 0; x < this.websites.length; x++) {
             if (this.websites[x]._id === websiteId) {

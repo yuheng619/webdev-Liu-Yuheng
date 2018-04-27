@@ -15,7 +15,7 @@ export class WidgetImageComponent implements OnInit {
     wid: string;
     pid: string;
     wgid: string;
-    widgets: any[];
+    widgets: any;
 
     widget = {};
     name: string;
@@ -47,7 +47,7 @@ export class WidgetImageComponent implements OnInit {
     }
 
     createImage() {
-        if (this.name === null) {
+        if (!this.name) {
             this.errorFlag = true;
             return;
         }
@@ -68,11 +68,13 @@ export class WidgetImageComponent implements OnInit {
             this.widgetService.updateWidget(this.wgid, updateImage)
                 .subscribe((widgets: any[]) => {
                     this.widgets = widgets;
+                    this.router.navigate(['/user/' + this.uid + '/website/' + this.wid + '/page/' + this.pid + '/widget']);
                 });
         } else {
             this.widgetService.createWidget(this.pid, newImage)
                 .subscribe((widgets: any[]) => {
                     this.widgets = widgets;
+                    this.router.navigate(['/user/' + this.uid + '/website/' + this.wid + '/page/' + this.pid + '/widget']);
                 });
         }
     }

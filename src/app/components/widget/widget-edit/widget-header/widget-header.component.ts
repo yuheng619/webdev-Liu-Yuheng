@@ -19,7 +19,7 @@ export class WidgetHeaderComponent implements OnInit {
   name: string;
   text: string;
   size: string;
-  widgets: any[];
+  widgets: any;
   errorFlag: boolean;
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
@@ -34,7 +34,7 @@ export class WidgetHeaderComponent implements OnInit {
                   this.widgetService.findWidgetById(this.wgid).subscribe(
                       (widget) => {
                           this.widget = widget;
-                          this.name = widget.widgetType;
+                          this.name = 'HEADING';
                           this.text = widget.text;
                           this.size = widget.size;
                       }
@@ -44,7 +44,7 @@ export class WidgetHeaderComponent implements OnInit {
   }
 
     createHeader() {
-      if (this.name === null) {
+      if (!this.name) {
           this.errorFlag = true;
           return;
       }
@@ -65,11 +65,13 @@ export class WidgetHeaderComponent implements OnInit {
           this.widgetService.updateWidget(this.wgid, updateHead)
               .subscribe((widgets: any[]) => {
                   this.widgets = widgets;
+                  this.router.navigate(['/user/' + this.uid + '/website/' + this.wid + '/page/' + this.pid + '/widget']);
               });
       } else {
           this.widgetService.createWidget(this.pid, newHead)
               .subscribe((widgets: any[]) => {
                   this.widgets = widgets;
+                  this.router.navigate(['/user/' + this.uid + '/website/' + this.wid + '/page/' + this.pid + '/widget']);
               });
       }
     }

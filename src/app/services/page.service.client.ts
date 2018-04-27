@@ -45,11 +45,8 @@ export class PageService {
     }
 
     findPageById(pageId: string) {
-        for (let x = 0; x < this.pages.length; x++) {
-            if (this.pages[x]._id === pageId) {
-                return this.pages[x];
-            }
-        }
+        const url = 'http://localhost:3100/api/page/' + pageId;
+        return this._http.get(url).map(response => response.json());
     }
 
     updatePage(pageId, page) {
@@ -69,7 +66,7 @@ export class PageService {
         const url = 'http://localhost:3100/api/page/' + pageId;
         return this._http.delete(url)
             .map((response: Response) => {
-                return response.json();
+                return response.json;
             });
     }
 }
