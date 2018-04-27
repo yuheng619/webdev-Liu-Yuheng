@@ -58,6 +58,6 @@ export class WidgetService {
         return this._http.delete(url)
             .map((response: Response) => {
                 return response.json;
-            });;
+            });
     }
 }

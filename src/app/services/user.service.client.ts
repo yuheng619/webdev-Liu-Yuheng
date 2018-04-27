@@ -91,7 +91,7 @@ export class UserService {
             username: username,
             password: password
         };
-        return this._http.post(this.baseUrl + '/api/login', body)
+        return this._http.post('/api/login', body)
             .map(
                 (res: Response) => {
                     const data = res.json();
@@ -102,7 +102,7 @@ export class UserService {
 
     logout() {
         this.options.withCredentials = true;
-        return this._http.post(this.baseUrl + '/api/logout', '')
+        return this._http.post('/api/logout', '')
             .map(
                 (res: Response) => {
                     const data = res;
@@ -117,7 +117,7 @@ export class UserService {
             password: password,
         };
 
-        return this._http.post(this.baseUrl + '/api/register', user)
+        return this._http.post('/api/register', user)
             .map(
                 (res: Response) => {
                     const data = res.json();
@@ -128,7 +128,7 @@ export class UserService {
 
     loggedIn() {
         this.options.withCredentials = true;
-        return this._http.post(this.baseUrl + '/api/loggedIn', '', this.options)
+        return this._http.post('/api/loggedIn', '', this.options)
             .map(
                 (res: Response) => {
                     const user = res.json();
